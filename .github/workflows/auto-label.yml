@@ -1,0 +1,38 @@
+name: "Issue Labeler"
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const body = context.payload.issue.body.toLowerCase();
+            const labels = [];
+            
+            // Проверка ОС
+            if (body.includes("windows")) labels.push("Windows");
+            if (body.includes("macos")) labels.push("macOS");
+            if (body.includes("linux")) labels.push("Linux");
+            
+            // Проверка статуса игры
+            if (body.includes("playable")) labels.push("Playable");
+            if (body.includes("platinum")) labels.push("Platinum");
+            if (body.includes("orange status")) labels.push("Orange Status");
+            if (body.includes("error/crash")) labels.push("Error/Crash");
+            if (body.includes("in-game")) labels.push("In-Game");
+            
+            // Проверка типа копии
+            if (body.includes("unofficial/pirated")) labels.push("Pirated/Unofficial");
+
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: labels
+              });
+            }
