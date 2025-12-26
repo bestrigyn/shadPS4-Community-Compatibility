@@ -1,32 +1,24 @@
-name: Multi-OS Build
-
+name: Welcome Message
 on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
+  issues:
+    types: [opened]
 
 jobs:
-  build-windows:
-    runs-on: windows-latest
+  welcome:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/github-script@v6
         with:
-          python-version: '3.10'
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `👋 **Hi there!** Thank you for contributing to the **shadPS4 Community Compatibility List**! Your report helps everyone.
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pyinstaller
+              **Quick Links:**
+              * 🎮 [shadPS4 Discord](https://discord.com/invite/shadps4)
+              * ⭐ [Give a Star to this Repo](https://github.com/${context.repo.owner}/${context.repo.repo})
 
-      - name: Build EXE
-        run: |
-          pyinstaller --noconsole --onefile --icon=shadps4-emulator.ico gui_app.py
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: shadPS4-Explorer-Windows
-          path: dist/*.exe
+              The automated labeler will process your report shortly. Have a great day!`
+            })
