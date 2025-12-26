@@ -21,9 +21,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller
 
-      - name: Build EXE
+      - name: Find and Build
         run: |
-          pyinstaller --noconsole --onefile gui_app.py
+          # Эта команда найдет файл, где бы он ни лежал в репозитории
+          $filePath = Get-ChildItem -Recurse -Filter "gui_app.py" | Select-Object -ExpandProperty FullName
+          pyinstaller --noconsole --onefile $filePath
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
