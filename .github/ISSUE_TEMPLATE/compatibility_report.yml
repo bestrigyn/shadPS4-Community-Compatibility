@@ -174,7 +174,7 @@ body:
   - type: textarea
     id: error_details
     attributes:
-      label: "7. Error Details"
+      label: "4. Error Details"
       placeholder: "Explain the error or details about trophies/controllers"
     validations:
       required: true
@@ -182,7 +182,7 @@ body:
   - type: textarea
     id: solution
     attributes:
-      label: "8. Solution / Fix"
+      label: "5. Solution / Fix"
       placeholder: "How to make it work? If no solution, write: nope"
     validations:
       required: true
@@ -190,7 +190,7 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: "9. Screenshots / Evidence"
+      label: "6. Screenshots / Evidence"
       placeholder: "Drag and drop your screenshots here"
     validations:
       required: true
