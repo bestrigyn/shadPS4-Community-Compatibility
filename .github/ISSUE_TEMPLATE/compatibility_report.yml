@@ -30,7 +30,7 @@ body:
         - "Цифровой дамп (собственный)"
         - "Диск"
         - "Пиратская версия"
-         validations:
+    validations:
       required: true
   - type: dropdown
     id: status
@@ -40,33 +40,33 @@ body:
         - "Играбельно"
         - "Только трофеи"
         - "Не запускается"
-         validations:
+    validations:
       required: true
   - type: input
     id: game_version
     attributes:
       label: "5. Версия игры"
       placeholder: "v1.00"
-       validations:
+    validations:
       required: true
   - type: input
     id: emulator_version
     attributes:
       label: "6. Версия программы (shadPS4)"
       placeholder: "v0.13.0 или v0.6.0"
-       validations:
+    validations:
       required: true
   - type: textarea
     id: errors
     attributes:
       label: "7. Ошибки"
-      placeholder: "Напишите код ошибки или что случилось"
-       validations:
+      placeholder: "Напишите код ошибки или что случилось (если нет ошибок, напишите 'Нет')"
+    validations:
       required: true
   - type: textarea
     id: fix
     attributes:
       label: "8. Решение"
-      placeholder: "Например: Откатиться на версию 0.6.0"
-       validations:
-      required: true 
+      placeholder: "Напишите как запустить или напишите 'Ждать обновлений'"
+    validations:
+      required: true
