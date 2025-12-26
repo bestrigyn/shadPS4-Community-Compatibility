@@ -22,6 +22,18 @@ body:
       placeholder: "e.g., CUSA09306"
     validations:
       required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "4. Platform"
+      options:
+        - "Windows (PC)"
+        - "Linux"
+        - "macOS"
+    validations:
+      required: true
+      
   - type: dropdown
     id: copy_type
     attributes:
