@@ -32,74 +32,63 @@ body:
         - "Unofficial/Pirated"
     validations:
       required: true
-  - type: dropdown
+
+  - &ver_status
+    type: dropdown
+    attributes:
+      label: "Select status for version"
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DualShock 3-4)"
+        - "White Status (Trophies work with ANY controller/keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - <<: *ver_status
     id: ver_050
     attributes:
       label: "Status on v0.5.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_060
     attributes:
       label: "Status on v0.6.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_070
     attributes:
       label: "Status on v0.7.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_080
     attributes:
       label: "Status on v0.8.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_0100
     attributes:
       label: "Status on v0.10.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_0110
     attributes:
       label: "Status on v0.11.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_0120
     attributes:
       label: "Status on v0.12.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_0125
     attributes:
       label: "Status on v0.12.5"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
-  - type: dropdown
+  - <<: *ver_status
     id: ver_0130
     attributes:
       label: "Status on v0.13.0"
-      options: ["Playable", "Trophies Only", "Crashes", "Not Tested"]
-    validations:
-      required: true
+
   - type: textarea
     id: error_details
     attributes:
       label: "7. Error Details"
-      placeholder: "Explain the error (e.g., Error 0X80550006 on v0.13.0)"
+      placeholder: "Explain the error or details about trophies/controllers"
     validations:
       required: true
   - type: textarea
