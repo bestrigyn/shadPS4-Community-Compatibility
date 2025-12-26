@@ -1,36 +1,16 @@
-name: Multi-OS Build
-
-on: [push, workflow_dispatch]
-
+name: Build Mac
+on: workflow_dispatch
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        # Здесь мы указываем все три системы сразу
-        os: [windows-latest, ubuntu-latest, macos-latest]
-
+  build-mac:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
-      - name: Install dependencies
-        run: pip install pyinstaller
-
-      - name: Build App
-        run: |
-          # Для Windows добавляем иконку, для остальных — просто собираем
-          if ("${{ matrix.os }}" -eq "windows-latest") {
-            pyinstaller --noconsole --onefile --icon=shadps4-emulator.ico gui_app.py
-          } else {
-            pyinstaller --noconsole --onefile gui_app.py
-          }
-        shell: pwsh
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - run: pip install pyinstaller
+      - run: pyinstaller --onefile --noconsole gui_app.py
+      - uses: actions/upload-artifact@v4
         with:
-          name: Explorer-${{ matrix.os }}
-          path: dist/*
+          name: Mac-Version
+          path: dist/gui_app
