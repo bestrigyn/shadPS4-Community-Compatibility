@@ -45,7 +45,7 @@ When filing a report, please choose the correct status for each shadPS4 version:
 
 | Game Name | ID | Copy Type | Status (v0.13.0) | Errors | Fix |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **My Name is Mayo** | CUSA09306 | Digital Dump | **Orange Status** | 0X80550006 on v0.13.0 | **nope** (Use v0.6.0) |
+| **My Name is Mayo** | CUSA09306 | Digital Dump | **In-Game** | 0X80550006 on v0.13.0 | **nope** (Use v0.6.0) |
 
 ---
 *Maintained by the Community. Let's make emulation better together!*
