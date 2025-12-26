@@ -1,5 +1,5 @@
 name: "Compatibility Report"
-description: "Submit a detailed game report for all shadPS4 versions"
+description: "Submit a detailed game report with screenshots for all shadPS4 versions"
 body:
   - type: checkboxes
     id: checkpoints
@@ -62,90 +62,6 @@ body:
       required: true
 
   - type: dropdown
-    id: ver_070
-    attributes:
-      label: "Status on v0.7.0"
-      options:
-        - "Playable (Everything works)"
-        - "Platinum (All trophies work / 100%)"
-        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
-        - "White Status (Trophies work with ANY controller or keyboard)"
-        - "In-Game (Plays but with glitches/issues)"
-        - "Error/Crash (Game does not start or crashes)"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: ver_080
-    attributes:
-      label: "Status on v0.8.0"
-      options:
-        - "Playable (Everything works)"
-        - "Platinum (All trophies work / 100%)"
-        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
-        - "White Status (Trophies work with ANY controller or keyboard)"
-        - "In-Game (Plays but with glitches/issues)"
-        - "Error/Crash (Game does not start or crashes)"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: ver_0100
-    attributes:
-      label: "Status on v0.10.0"
-      options:
-        - "Playable (Everything works)"
-        - "Platinum (All trophies work / 100%)"
-        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
-        - "White Status (Trophies work with ANY controller or keyboard)"
-        - "In-Game (Plays but with glitches/issues)"
-        - "Error/Crash (Game does not start or crashes)"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: ver_0110
-    attributes:
-      label: "Status on v0.11.0"
-      options:
-        - "Playable (Everything works)"
-        - "Platinum (All trophies work / 100%)"
-        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
-        - "White Status (Trophies work with ANY controller or keyboard)"
-        - "In-Game (Plays but with glitches/issues)"
-        - "Error/Crash (Game does not start or crashes)"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: ver_0120
-    attributes:
-      label: "Status on v0.12.0"
-      options:
-        - "Playable (Everything works)"
-        - "Platinum (All trophies work / 100%)"
-        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
-        - "White Status (Trophies work with ANY controller or keyboard)"
-        - "In-Game (Plays but with glitches/issues)"
-        - "Error/Crash (Game does not start or crashes)"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: ver_0125
-    attributes:
-      label: "Status on v0.12.5"
-      options:
-        - "Playable (Everything works)"
-        - "Platinum (All trophies work / 100%)"
-        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
-        - "White Status (Trophies work with ANY controller or keyboard)"
-        - "In-Game (Plays but with glitches/issues)"
-        - "Error/Crash (Game does not start or crashes)"
-    validations:
-      required: true
-
-  - type: dropdown
     id: ver_0130
     attributes:
       label: "Status on v0.13.0"
@@ -166,10 +82,19 @@ body:
       placeholder: "Explain the error or details about trophies/controllers"
     validations:
       required: true
+
   - type: textarea
     id: solution
     attributes:
       label: "8. Solution / Fix"
       placeholder: "How to make it work? If no solution, write: nope"
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "9. Screenshots / Evidence"
+      placeholder: "Drag and drop your screenshots here (Trophies, Errors, Gameplay)"
     validations:
       required: true
