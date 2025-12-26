@@ -26,7 +26,7 @@ body:
   - type: dropdown
     id: platform
     attributes:
-      label: "4. Platform"
+      label: "3. Platform"
       options:
         - "Windows (PC)"
         - "Linux"
@@ -37,7 +37,7 @@ body:
   - type: dropdown
     id: copy_type
     attributes:
-      label: "3. Copy Type"
+      label: "4. Copy Type"
       options:
         - "Digital Dump (Own)"
         - "Physical Disc"
