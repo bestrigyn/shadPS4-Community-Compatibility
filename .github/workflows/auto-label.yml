@@ -2,6 +2,7 @@ name: "Issue Labeler"
 on:
   issues:
     types: [opened, edited]
+  workflow_dispatch: # <--- ЭТА СТРОЧКА ВКЛЮЧАЕТ КНОПКУ
 
 jobs:
   triage:
@@ -10,29 +11,41 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const body = context.payload.issue.body.toLowerCase();
-            const labels = [];
-            
-            // Проверка ОС
-            if (body.includes("windows")) labels.push("Windows");
-            if (body.includes("macos")) labels.push("macOS");
-            if (body.includes("linux")) labels.push("Linux");
-            
-            // Проверка статуса игры
-            if (body.includes("playable")) labels.push("Playable");
-            if (body.includes("platinum")) labels.push("Platinum");
-            if (body.includes("orange status")) labels.push("Orange Status");
-            if (body.includes("error/crash")) labels.push("Error/Crash");
-            if (body.includes("in-game")) labels.push("In-Game");
-            
-            // Проверка типа копии
-            if (body.includes("unofficial/pirated")) labels.push("Pirated/Unofficial");
+            async function labelIssue(issueNumber, issueBody) {
+              const body = (issueBody || "").toLowerCase();
+              const labels = [];
+              
+              if (body.includes("windows")) labels.push("Windows");
+              if (body.includes("macos")) labels.push("macOS");
+              if (body.includes("linux")) labels.push("Linux");
+              
+              if (body.includes("playable")) labels.push("Playable");
+              if (body.includes("platinum")) labels.push("Platinum");
+              if (body.includes("orange status")) labels.push("Orange Status");
+              if (body.includes("error/crash")) labels.push("Error/Crash");
+              if (body.includes("in-game")) labels.push("In-Game");
+              
+              if (body.includes("unofficial/pirated")) labels.push("Pirated/Unofficial");
 
-            if (labels.length > 0) {
-              await github.rest.issues.addLabels({
+              if (labels.length > 0) {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  labels: labels
+                });
+              }
+            }
+
+            if (context.eventName === 'workflow_dispatch') {
+              const issues = await github.rest.issues.listForRepo({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                issue_number: context.issue.number,
-                labels: labels
+                state: 'open'
               });
+              for (const issue of issues.data) {
+                await labelIssue(issue.number, issue.body);
+              }
+            } else {
+              await labelIssue(context.issue.number, context.payload.issue.body);
             }
