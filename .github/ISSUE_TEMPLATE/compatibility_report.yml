@@ -1,0 +1,62 @@
+name: Отчет о совместимости игры
+description: Сообщить о работе игры на разных версиях shadPS4
+body:
+  - type: checkboxes
+    id: checkpoints
+    attributes:
+      label: Важно: Прочитайте сначала
+      options:
+        - label: Я понимаю, что это независимый список (Community)
+          required: true
+  - type: input
+    id: game_name
+    attributes:
+      label: "1. Имя игры"
+      placeholder: "Например: My Name is Mayo"
+    validations:
+      required: true
+  - type: input
+    id: game_id
+    attributes:
+      label: "2. Номер игры (ID)"
+      placeholder: "Например: CUSA09306"
+    validations:
+      required: true
+  - type: dropdown
+    id: piracy_status
+    attributes:
+      label: "3. Тип копии"
+      options:
+        - "Цифровой дамп (собственный)"
+        - "Диск"
+        - "Пиратская версия"
+  - type: dropdown
+    id: status
+    attributes:
+      label: "4. Играбельность"
+      options:
+        - "Играбельно"
+        - "Только трофеи"
+        - "Не запускается"
+  - type: input
+    id: game_version
+    attributes:
+      label: "5. Версия игры"
+      placeholder: "v1.00"
+  - type: input
+    id: emulator_version
+    attributes:
+      label: "6. Версия программы (shadPS4)"
+      placeholder: "v0.13.0 или v0.6.0"
+  - type: textarea
+    id: errors
+    attributes:
+      label: "7. Ошибки"
+      description: "Напишите код ошибки или что случилось"
+      placeholder: "Ошибка 0X80550006"
+  - type: textarea
+    id: fix
+    attributes:
+      label: "8. Решение"
+      description: "Как запустить или исправить?"
+      placeholder: "Откатиться на версию 0.6.0"
