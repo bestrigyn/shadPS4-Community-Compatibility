@@ -1,12 +1,12 @@
-name: Отчет о совместимости игры
-description: Сообщить о работе игры на разных версиях shadPS4
+name: "Отчет о совместимости игр"
+description: "Сообщить о работе игры в разных версиях shadPS4"
 body:
   - type: checkboxes
     id: checkpoints
     attributes:
-      label: Важно: Прочитайте сначала
+      label: "Важно: Прочитайте сначала"
       options:
-        - label: Я понимаю, что это независимый список (Community)
+        - label: "Я понимаю, что это независимый список (Сообщество)"
           required: true
   - type: input
     id: game_name
@@ -52,11 +52,9 @@ body:
     id: errors
     attributes:
       label: "7. Ошибки"
-      description: "Напишите код ошибки или что случилось"
-      placeholder: "Ошибка 0X80550006"
+      placeholder: "Напишите код ошибки или что случилось"
   - type: textarea
     id: fix
     attributes:
       label: "8. Решение"
-      description: "Как запустить или исправить?"
-      placeholder: "Откатиться на версию 0.6.0"
+      placeholder: "Например: Откатиться на версию 0.6.0"
