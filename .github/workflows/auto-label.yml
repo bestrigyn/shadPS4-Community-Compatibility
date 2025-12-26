@@ -2,7 +2,7 @@ name: "Issue Labeler"
 on:
   issues:
     types: [opened, edited]
-  workflow_dispatch: # <--- ЭТА СТРОЧКА ВКЛЮЧАЕТ КНОПКУ
+  workflow_dispatch: 
 
 jobs:
   triage:
@@ -13,26 +13,57 @@ jobs:
           script: |
             async function labelIssue(issueNumber, issueBody) {
               const body = (issueBody || "").toLowerCase();
-              const labels = [];
+              const newLabels = [];
               
-              if (body.includes("windows")) labels.push("Windows");
-              if (body.includes("macos")) labels.push("macOS");
-              if (body.includes("linux")) labels.push("Linux");
-              
-              if (body.includes("playable")) labels.push("Playable");
-              if (body.includes("platinum")) labels.push("Platinum");
-              if (body.includes("orange status")) labels.push("Orange Status");
-              if (body.includes("error/crash")) labels.push("Error/Crash");
-              if (body.includes("in-game")) labels.push("In-Game");
-              
-              if (body.includes("unofficial/pirated")) labels.push("Pirated/Unofficial");
+              // Список всех возможных тегов для очистки
+              const allPossibleLabels = [
+                "Windows", "macOS", "Linux", 
+                "Playable", "Platinum", "Orange Status", 
+                "In-Game", "Error/Crash", "Pirated/Unofficial"
+              ];
 
-              if (labels.length > 0) {
+              // Проверка ОС
+              if (body.includes("windows")) newLabels.push("Windows");
+              if (body.includes("macos")) newLabels.push("macOS");
+              if (body.includes("linux")) newLabels.push("Linux");
+              
+              // Проверка статуса (Тут будут твои цвета: Зеленый, Золотой, Желтый)
+              if (body.includes("playable")) newLabels.push("Playable");
+              if (body.includes("platinum")) newLabels.push("Platinum");
+              if (body.includes("orange status")) newLabels.push("Orange Status");
+              if (body.includes("error/crash")) newLabels.push("Error/Crash");
+              if (body.includes("in-game")) newLabels.push("In-Game");
+              
+              // Проверка типа копии
+              if (body.includes("unofficial/pirated")) newLabels.push("Pirated/Unofficial");
+
+              if (newLabels.length > 0) {
+                // Сначала удаляем старые системные теги, чтобы не было свалки
+                const currentIssues = await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber
+                });
+                
+                const labelsToRemove = currentIssues.data.labels
+                  .map(l => l.name)
+                  .filter(name => allPossibleLabels.includes(name) && !newLabels.includes(name));
+
+                for (const label of labelsToRemove) {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    name: label
+                  }).catch(() => {}); 
+                }
+
+                // Добавляем актуальные теги
                 await github.rest.issues.addLabels({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issueNumber,
-                  labels: labels
+                  labels: newLabels
                 });
               }
             }
