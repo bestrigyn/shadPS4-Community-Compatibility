@@ -1,0 +1,24 @@
+name: Welcome Message
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `👋 **Hi there!** Thank you for contributing to the **shadPS4 Community Compatibility List**! Your report helps everyone.
+
+              **Quick Links:**
+              * 🎮 [shadPS4 Discord](https://discord.com/invite/shadps4)
+              * ⭐ [Give a Star to this Repo](https://github.com/${context.repo.owner}/${context.repo.repo})
+
+              The automated labeler will process your report shortly. Have a great day!`
+            })
