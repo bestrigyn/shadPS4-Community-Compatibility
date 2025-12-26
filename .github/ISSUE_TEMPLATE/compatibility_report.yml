@@ -33,56 +33,131 @@ body:
     validations:
       required: true
 
-  - &ver_status
-    type: dropdown
+  - type: dropdown
+    id: ver_050
     attributes:
-      label: "Select status for version"
+      label: "Status on v0.5.0"
       options:
         - "Playable (Everything works)"
         - "Platinum (All trophies work / 100%)"
-        - "Orange Status (Trophies work, but ONLY with original DualSense/DualShock 3-4)"
-        - "White Status (Trophies work with ANY controller/keyboard)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
         - "In-Game (Plays but with glitches/issues)"
         - "Error/Crash (Game does not start or crashes)"
     validations:
       required: true
 
-  - <<: *ver_status
-    id: ver_050
-    attributes:
-      label: "Status on v0.5.0"
-  - <<: *ver_status
+  - type: dropdown
     id: ver_060
     attributes:
       label: "Status on v0.6.0"
-  - <<: *ver_status
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - type: dropdown
     id: ver_070
     attributes:
       label: "Status on v0.7.0"
-  - <<: *ver_status
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - type: dropdown
     id: ver_080
     attributes:
       label: "Status on v0.8.0"
-  - <<: *ver_status
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - type: dropdown
     id: ver_0100
     attributes:
       label: "Status on v0.10.0"
-  - <<: *ver_status
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - type: dropdown
     id: ver_0110
     attributes:
       label: "Status on v0.11.0"
-  - <<: *ver_status
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - type: dropdown
     id: ver_0120
     attributes:
       label: "Status on v0.12.0"
-  - <<: *ver_status
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - type: dropdown
     id: ver_0125
     attributes:
       label: "Status on v0.12.5"
-  - <<: *ver_status
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
+
+  - type: dropdown
     id: ver_0130
     attributes:
       label: "Status on v0.13.0"
+      options:
+        - "Playable (Everything works)"
+        - "Platinum (All trophies work / 100%)"
+        - "Orange Status (Trophies work, but ONLY with original DualSense/DS 3-4)"
+        - "White Status (Trophies work with ANY controller or keyboard)"
+        - "In-Game (Plays but with glitches/issues)"
+        - "Error/Crash (Game does not start or crashes)"
+    validations:
+      required: true
 
   - type: textarea
     id: error_details
