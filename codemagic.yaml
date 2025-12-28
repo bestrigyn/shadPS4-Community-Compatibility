@@ -1,0 +1,16 @@
+workflows:
+  macos-python-build:
+    name: Build macOS App (Python)
+    instance_type: mac_mini_m2 # Используем настоящий Мак для сборки
+    scripts:
+      - name: Install dependencies
+        script: |
+          pip install pyinstaller
+          # если есть зависимости, раскомментируйте строку ниже:
+          # pip install -r requirements.txt
+      - name: Build .app file
+        script: |
+          # Замените main.py на имя вашего главного файла
+          pyinstaller --windowed --onefile --name "MyPythonApp" main.py
+    artifacts:
+      - dist/*.app
