@@ -6,12 +6,11 @@ workflows:
       - name: Install dependencies
         script: |
           pip install pyinstaller
-          # Если вашему коду нужны библиотеки, добавьте их ниже:
-          # pip install PyQt5 requests pandas
+          # Если вашему приложению нужны дополнительные библиотеки, 
+          # добавьте их здесь, например: pip install PyQt6
       - name: Build .app file
         script: |
-          # ВАЖНО: Замените 'main.py' на реальное имя вашего файла!
-          # Если ваш файл лежит в папке, укажите путь: folder/myscript.py
-          pyinstaller --windowed --onefile main.py
+          # Теперь мы указываем правильное имя вашего файла
+          pyinstaller --windowed --onefile --name "shadPS4-Explorer" gui_app.py
     artifacts:
       - dist/*.app
