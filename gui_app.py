@@ -225,3 +225,4 @@ if __name__ == '__main__':
     window = ShadExplorerV1()
     window.show()
     sys.exit(app.exec())
+# Я  лох
