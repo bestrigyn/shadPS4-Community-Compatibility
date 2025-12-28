@@ -1,5 +1,5 @@
 import sys, os, requests, re, json
-from PyQt6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLabel,
+from PyQt6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLabel,  
                              QScrollArea, QGridLayout, QFrame, QPushButton,
                              QLineEdit, QHBoxLayout, QMenu, QMessageBox, QComboBox, QCheckBox, QTextEdit)
 from PyQt6.QtGui import QPixmap, QAction
